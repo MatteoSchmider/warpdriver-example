@@ -1,4 +1,6 @@
-project(warpdriver-example-binary)
+project(warpdriver-example-app)
+
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin) 
 
 add_executable(${PROJECT_NAME} main.cpp)
 
