@@ -22,6 +22,8 @@ int main(int argc, char *argv[]) {
     bcm2835_spi_setClockDivider(BCM2835_SPI_CLOCK_DIVIDER_256); // The default
     bcm2835_spi_chipSelect(BCM2835_SPI_CS_NONE);                // The default
 
+    bcm2835_gpio_write(RPiGPIOPin::RPI_BPLUS_GPIO_J8_13, HIGH);
+    bcm2835_gpio_write(RPiGPIOPin::RPI_BPLUS_GPIO_J8_15, HIGH);
     bcm2835_gpio_write(RPiGPIOPin::RPI_BPLUS_GPIO_J8_11, LOW);
     bcm2835_delay(100);
     bcm2835_spi_setDataMode(BCM2835_SPI_MODE3);
