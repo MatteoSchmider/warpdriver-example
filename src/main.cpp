@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
     std::cout << "getIux: " << motor.getIux() << std::endl;
     std::cout << "getIv: " << motor.getIv() << std::endl;
     std::cout << "getIwy: " << motor.getIwy() << std::endl;
-    std::cout << "getTorque: " << motor.getTorque() << std::endl;
+    /*std::cout << "getTorque: " << motor.getTorque() << std::endl;
     std::cout << "getVelocity: " << motor.getVelocity() << std::endl;
     std::cout << "getPostion: " << motor.getPostion() << std::endl;
     std::cout << "getStatus: "
@@ -63,13 +63,11 @@ int main(int argc, char *argv[]) {
     std::cout << motor.getStatus(WarpDriver::StatusMask::PWM_MIN) << std::endl;
     std::cout << motor.getStatus(WarpDriver::StatusMask::REF_SW_H) << std::endl;
     std::cout << motor.getStatus(WarpDriver::StatusMask::REF_SW_L) << std::endl;
-    std::cout << motor.getStatus(WarpDriver::StatusMask::REF_SW_R) << std::endl;
+    std::cout << motor.getStatus(WarpDriver::StatusMask::REF_SW_R) << std::endl;*/
 
     while (true) {
-      std::cout << "getAdcRawDataI0: " << motor.getAdcRawDataI0() << std::endl;
-      std::cout << "getAdcRawDataI1: " << motor.getAdcRawDataI1() << std::endl;
       std::cout << "getAdcRawDataVM: " << motor.getAdcRawDataVM() << std::endl;
-      std::this_thread::sleep_for(std::chrono::milliseconds(100));
+      std::this_thread::sleep_for(std::chrono::milliseconds(10));
     }
   }
   bcm2835_close();
