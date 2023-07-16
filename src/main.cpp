@@ -26,7 +26,7 @@ int main(int argc, char *argv[]) {
     bcm2835_gpio_write(RPiGPIOPin::RPI_BPLUS_GPIO_J8_15, HIGH);
     bcm2835_gpio_write(RPiGPIOPin::RPI_BPLUS_GPIO_J8_11, LOW);
     bcm2835_delay(100);
-    char recv[5] = {0x0, 0, 0, 0, 0};
+    char recv[5] = {0x07, 6, 5, 4, 3};
     bcm2835_spi_transfern(recv, sizeof(recv));
     bcm2835_delay(100);
     bcm2835_gpio_write(RPiGPIOPin::RPI_BPLUS_GPIO_J8_11, HIGH);
