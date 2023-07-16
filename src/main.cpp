@@ -13,14 +13,38 @@ int main(int argc, char *argv[]) {
   bcm2835_gpio_fsel(RPiGPIOPin::RPI_BPLUS_GPIO_J8_15, BCM2835_GPIO_FSEL_OUTP);
 
   {
-    RaspiSPI rspi = RaspiSPI(RPiGPIOPin::RPI_BPLUS_GPIO_J8_11,
+    if (!bcm2835_spi_begin()) {
+      printf("bcm2835_spi_begin failed. Are you running as root??\n");
+      return 1;
+    }
+    bcm2835_spi_setBitOrder(BCM2835_SPI_BIT_ORDER_MSBFIRST);    // The default
+    bcm2835_spi_setDataMode(BCM2835_SPI_MODE3);                 // The default
+    bcm2835_spi_setClockDivider(BCM2835_SPI_CLOCK_DIVIDER_256); // The default
+    bcm2835_spi_chipSelect(BCM2835_SPI_CS_NONE);                // The default
+
+    bcm2835_gpio_write(RPiGPIOPin::RPI_BPLUS_GPIO_J8_11, LOW);
+    bcm2835_delay(100);
+    bcm2835_spi_setDataMode(BCM2835_SPI_MODE3);
+    bcm2835_delay(100);
+    char recv[5] = {0x00, 0, 0, 0, 0};
+    bcm2835_spi_transfern(recv, sizeof(recv));
+    bcm2835_delay(100);
+    bcm2835_gpio_write(RPiGPIOPin::RPI_BPLUS_GPIO_J8_11, HIGH);
+    bcm2835_delay(100);
+    std::cout << ((recv[1] << 24) | (recv[2] << 16) | (recv[3] << 8) | recv[4])
+              << std::endl;
+
+    bcm2835_spi_end();
+    bcm2835_close();
+
+    /*RaspiSPI rspi = RaspiSPI(RPiGPIOPin::RPI_BPLUS_GPIO_J8_11,
                              RPiGPIOPin::RPI_BPLUS_GPIO_J8_15,
                              RPiGPIOPin::RPI_BPLUS_GPIO_J8_13);
     WarpDriver motor =
         WarpDriver(rspi, WarpDriver::MotorType::THREE_PHASE_BLDC, 7, 100'000,
                    WarpDriver::CalibrationData{0, 0, 0});
 
-    /*std::cout << "getAdcRawDataI0: " << motor.getAdcRawDataI0() << std::endl;
+    std::cout << "getAdcRawDataI0: " << motor.getAdcRawDataI0() << std::endl;
     std::cout << "getAdcRawDataI1: " << motor.getAdcRawDataI1() << std::endl;
     std::cout << "getAdcRawDataVM: " << motor.getAdcRawDataVM() << std::endl;
     std::cout << "getIux: " << motor.getIux() << std::endl;
@@ -73,7 +97,8 @@ int main(int argc, char *argv[]) {
     while (true) {
       //      std::cout << "getAdcRawDataVM: " << motor.getAdcRawDataVM() <<
       //      std::endl;
-      std::cout << "getHardwareInfo: " << motor.getHardwareInfo() << std::endl;
+      // std::cout << "getHardwareInfo: " << motor.getHardwareInfo() <<
+      // std::endl;
       std::this_thread::sleep_for(std::chrono::milliseconds(10));
     }
   }
