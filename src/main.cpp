@@ -31,9 +31,10 @@ int main(int argc, char *argv[]) {
     bcm2835_delay(100);
     bcm2835_gpio_write(RPiGPIOPin::RPI_BPLUS_GPIO_J8_11, HIGH);
     bcm2835_delay(100);
-    std::cout << ((recv[1] << 24) | (recv[2] << 16) | (recv[3] << 8) | recv[4])
+    std::cout << std::hex
+              << ((recv[1] << 24) | (recv[2] << 16) | (recv[3] << 8) | recv[4])
               << std::endl;
-    std::cout << ((recv[0])) << std::endl;
+    std::cout << std::hex << ((recv[0])) << std::endl;
 
     bcm2835_spi_end();
     bcm2835_close();
