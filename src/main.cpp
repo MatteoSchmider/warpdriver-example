@@ -16,12 +16,12 @@ int main(int argc, char *argv[]) {
         WarpDriver(rspi, WarpDriver::MotorType::THREE_PHASE_BLDC, 7, 100'000,
                    WarpDriver::CalibrationData{0, 0, 0});
 
-    std::cout << "getAdcRawDataI0: " << motor.getAdcRawDataI0() << std::endl;
+/*    std::cout << "getAdcRawDataI0: " << motor.getAdcRawDataI0() << std::endl;
     std::cout << "getAdcRawDataI1: " << motor.getAdcRawDataI1() << std::endl;
     std::cout << "getAdcRawDataVM: " << motor.getAdcRawDataVM() << std::endl;
     std::cout << "getIux: " << motor.getIux() << std::endl;
     std::cout << "getIv: " << motor.getIv() << std::endl;
-    std::cout << "getIwy: " << motor.getIwy() << std::endl;
+    std::cout << "getIwy: " << motor.getIwy() << std::endl;*/
     /*std::cout << "getTorque: " << motor.getTorque() << std::endl;
     std::cout << "getVelocity: " << motor.getVelocity() << std::endl;
     std::cout << "getPostion: " << motor.getPostion() << std::endl;
@@ -66,7 +66,7 @@ int main(int argc, char *argv[]) {
     std::cout << motor.getStatus(WarpDriver::StatusMask::REF_SW_R) << std::endl;*/
 
     while (true) {
-      std::cout << "getAdcRawDataVM: " << motor.getAdcRawDataVM() << std::endl;
+//      std::cout << "getAdcRawDataVM: " << motor.getAdcRawDataVM() << std::endl;
       std::cout << "getHardwareInfo: " << motor.getHardwareInfo() << std::endl;
       std::this_thread::sleep_for(std::chrono::milliseconds(10));
     }
