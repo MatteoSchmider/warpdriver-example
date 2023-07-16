@@ -26,9 +26,7 @@ int main(int argc, char *argv[]) {
     bcm2835_gpio_write(RPiGPIOPin::RPI_BPLUS_GPIO_J8_15, HIGH);
     bcm2835_gpio_write(RPiGPIOPin::RPI_BPLUS_GPIO_J8_11, LOW);
     bcm2835_delay(100);
-    bcm2835_spi_setDataMode(BCM2835_SPI_MODE3);
-    bcm2835_delay(100);
-    char recv[5] = {0x07, 100, 0, 0, 0};
+    char recv[5] = {0x1B, 100, 0, 0, 0};
     bcm2835_spi_transfern(recv, sizeof(recv));
     bcm2835_delay(100);
     bcm2835_gpio_write(RPiGPIOPin::RPI_BPLUS_GPIO_J8_11, HIGH);
@@ -97,13 +95,13 @@ int main(int argc, char *argv[]) {
     std::cout << motor.getStatus(WarpDriver::StatusMask::REF_SW_R) <<
     std::endl;*/
 
-    while (true) {
-      //      std::cout << "getAdcRawDataVM: " << motor.getAdcRawDataVM() <<
-      //      std::endl;
-      // std::cout << "getHardwareInfo: " << motor.getHardwareInfo() <<
-      // std::endl;
-      std::this_thread::sleep_for(std::chrono::milliseconds(10));
-    }
+    // while (true) {
+    //      std::cout << "getAdcRawDataVM: " << motor.getAdcRawDataVM() <<
+    //      std::endl;
+    // std::cout << "getHardwareInfo: " << motor.getHardwareInfo() <<
+    // std::endl;
+    // std::this_thread::sleep_for(std::chrono::milliseconds(10));
+    //}
   }
   bcm2835_close();
   return 0;
