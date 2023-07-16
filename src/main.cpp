@@ -34,7 +34,6 @@ int main(int argc, char *argv[]) {
     std::cout << std::hex
               << ((recv[1] << 24) | (recv[2] << 16) | (recv[3] << 8) | recv[4])
               << std::endl;
-    std::cout << std::hex << ((recv[0])) << std::endl;
 
     bcm2835_spi_end();
     bcm2835_close();
