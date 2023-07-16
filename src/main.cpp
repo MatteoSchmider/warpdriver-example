@@ -28,7 +28,7 @@ int main(int argc, char *argv[]) {
     bcm2835_delay(100);
     bcm2835_spi_setDataMode(BCM2835_SPI_MODE3);
     bcm2835_delay(100);
-    char recv[5] = {0x05, 0, 0, 0, 0};
+    char recv[5] = {0x07, 1, 0, 0, 0};
     bcm2835_spi_transfern(recv, sizeof(recv));
     bcm2835_delay(100);
     bcm2835_gpio_write(RPiGPIOPin::RPI_BPLUS_GPIO_J8_11, HIGH);
