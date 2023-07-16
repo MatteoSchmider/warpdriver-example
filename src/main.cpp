@@ -14,16 +14,16 @@ int main(int argc, char *argv[]) {
       WarpDriver(rspi, WarpDriver::MotorType::THREE_PHASE_BLDC, 7, 100'000,
                  WarpDriver::CalibrationData{0, 0, 0});
 
-  std::cout << motor.getAdcRawDataI0() << std::endl;
-  std::cout << motor.getAdcRawDataI1() << std::endl;
-  std::cout << motor.getAdcRawDataVM() << std::endl;
-  std::cout << motor.getIux() << std::endl;
-  std::cout << motor.getIv() << std::endl;
-  std::cout << motor.getIwy() << std::endl;
-  std::cout << motor.getTorque() << std::endl;
-  std::cout << motor.getVelocity() << std::endl;
-  std::cout << motor.getPostion() << std::endl;
-  std::cout << motor.getStatus(WarpDriver::StatusMask::ADC_AENC_CLIPPED)
+  std::cout << "getAdcRawDataI0: " << motor.getAdcRawDataI0: () << std::endl;
+  std::cout << "getAdcRawDataI1: " << motor.getAdcRawDataI1() << std::endl;
+  std::cout << "getAdcRawDataVM: " << motor.getAdcRawDataVM() << std::endl;
+  std::cout << "getIux: " << motor.getIux() << std::endl;
+  std::cout << "getIv: " << motor.getIv() << std::endl;
+  std::cout << "getIwy: " << motor.getIwy() << std::endl;
+  std::cout << "getTorque: " << motor.getTorque() << std::endl;
+  std::cout << "getVelocity: " << motor.getVelocity() << std::endl;
+  std::cout << "getPostion: " << motor.getPostion() << std::endl;
+  std::cout << "getStatus: " << motor.getStatus(WarpDriver::StatusMask::ADC_AENC_CLIPPED)
             << std::endl;
   std::cout << motor.getStatus(WarpDriver::StatusMask::ADC_I_CLIPPED)
             << std::endl;
