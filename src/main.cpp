@@ -14,7 +14,7 @@ int main(int argc, char *argv[]) {
       WarpDriver(rspi, WarpDriver::MotorType::THREE_PHASE_BLDC, 7, 100'000,
                  WarpDriver::CalibrationData{0, 0, 0});
 
-  std::cout << "getAdcRawDataI0: " << motor.getAdcRawDataI0: () << std::endl;
+  std::cout << "getAdcRawDataI0: " << motor.getAdcRawDataI0() << std::endl;
   std::cout << "getAdcRawDataI1: " << motor.getAdcRawDataI1() << std::endl;
   std::cout << "getAdcRawDataVM: " << motor.getAdcRawDataVM() << std::endl;
   std::cout << "getIux: " << motor.getIux() << std::endl;
